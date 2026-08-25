@@ -1,69 +1,119 @@
 # Grok Bot Profiles
 
-Ready-to-use profiles for focused Grok Bots. Each bot owns one outcome and stops at a clear approval boundary.
+> One outcome. One approval boundary. One bot.
 
-## Development
+A collection of ready-to-use profiles for Grok Bots. Each profile gives a bot a focused job, a concrete deliverable, and an explicit point where its authority ends.
 
-The development collection is organized by responsibility, not language or framework:
+General-purpose agents blur responsibility. These profiles keep research, implementation, and verification separate so a bot never approves its own work.
 
-- [Bug Reproducer](bots/development/bug-reproducer/) — reproduces a reported bug and returns evidence without changing code
-- [PR Producer](bots/development/pr-producer/) — directs the built-in Cursor Cloud Agent to implement approved work and produce a pull request without merging it
-- [PR Verifier](bots/development/pr-verifier/) — independently checks tests, contracts, and regressions, then passes, blocks, or holds the pull request
+## Development workflow
 
-Use them as a pipeline:
+The development collection is organized by outcome and approval boundary, not language or framework.
+
+| Bot | Takes in | Produces | Must stop before |
+| --- | --- | --- | --- |
+| [Bug Reproducer](bots/development/bug-reproducer/) | A selected GitHub issue and product URL | A reproducibility verdict and evidence report | Editing code or invoking a coding agent |
+| [PR Producer](bots/development/pr-producer/) | An approved issue, specification, or reproduction report | A focused branch and reviewable pull request through the built-in Cursor Cloud Agent | Reviewing, approving, or merging the pull request |
+| [PR Verifier](bots/development/pr-verifier/) | A pull request, its brief, diff, tests, and GitHub checks | An evidence-backed `PASS`, `BLOCK`, or `HOLD` verdict | Implementing fixes or merging the pull request |
+
+Use each role as a separate Grok Bot:
 
 ```text
-Bug Reproducer → PR Producer → PR Verifier → Human merge decision
+GitHub issue
+    ↓
+Bug Reproducer ── evidence report
+    ↓
+PR Producer ───── branch + pull request
+    ↓
+PR Verifier ───── PASS / BLOCK / HOLD
+    ↓
+Human merge decision
 ```
 
-## Install a bot
+The PR Producer and PR Verifier must never be the same Bot or share the same conversation. The separation is the feature.
 
-1. Open the bot's directory.
-2. Follow its `README.md`.
-3. Connect only the plugins listed for that bot.
-4. Keep separate Grok Bots for reproduction, implementation, and review.
+## Quick start
 
-## Create another profile
+1. Choose a bot from the table above.
+2. Open its directory and read its `README.md`.
+3. Create a new Grok Bot.
+4. Set **Name** and **Title** from the `PROFILE.md` frontmatter.
+5. Paste the `PROFILE.md` body—from the `# Bot Name` heading through `First task`—into **Description**. Do not paste the YAML frontmatter.
+6. Connect only the integrations listed in the profile.
+7. Paste `SETUP.md` as the first message, then send the First task from the bot's README.
 
-Start with the files in [`templates/bot/`](templates/bot/). Keep every bot focused on one repeatable outcome and state what it must never do.
+New to Grok Bots? See the official [Get started](https://docs.x.ai/grok-bot/get-started) and [Create and manage Bots](https://docs.x.ai/grok-bot/bots) guides.
 
-Grok Bots do not import profile JSON. A profile is text mapped to the app's **Name**, **Title**, **Description**, **Avatar**, and **Plugins** fields.
+## What is in a profile?
 
-Official documentation: [Create and manage Bots](https://docs.x.ai/grok-bot/bots) · [Get started](https://docs.x.ai/grok-bot/get-started) · [Use cases](https://docs.x.ai/grok-bot/use-cases)
+Every bot directory contains three files:
 
-## App field mapping
-
-| App field | Repository source |
+| File | Purpose |
 | --- | --- |
-| Name | `PROFILE.md` frontmatter `name` |
-| Title | `PROFILE.md` frontmatter `title` |
-| Description | `PROFILE.md` body, from `# NAME` through `First task`; exclude the YAML frontmatter |
-| Avatar | Configure in the app |
-| Plugins | frontmatter `integrations` → Settings → Plugins |
+| `PROFILE.md` | Durable identity, job, output contract, working rules, and approval boundary |
+| `SETUP.md` | One-time setup message and task-specific operating checklist |
+| `README.md` | Installation instructions, required integrations, related bots, and first task |
 
-Keep only durable behavior in the Description. Put one-off instructions in the conversation.
+The YAML frontmatter in `PROFILE.md` maps to the Grok Bot interface:
 
-## Add a bot
+| App field | Profile source |
+| --- | --- |
+| Name | `name` |
+| Title | `title` |
+| Description | Markdown body below the frontmatter |
+| Plugins | `integrations` |
+| Avatar | Configure directly in the app |
+
+## Design principles
+
+- **Split by outcome, not stack.** Frontend and backend work can belong to one bot when they serve the same user outcome.
+- **Separate production from verification.** A bot must not review or approve work it produced.
+- **Keep Description durable.** Put permanent role rules in `PROFILE.md`; put implementation-specific checklists in `SETUP.md` or the task conversation.
+- **Make failure explicit.** Use outcomes such as `BLOCKED` or `HOLD` instead of guessing or silently expanding authority.
+- **Require observable evidence.** Never invent logs, test results, check status, URLs, or repository state.
+- **Stop at the boundary.** Opening a pull request, approving it, merging it, deploying it, and contacting people are different permissions.
+
+One bot may combine several professional disciplines when they support the same outcome. Create a separate bot when the outcome, information sources, tools, schedule, or approval boundary changes.
+
+## Add a profile
+
+Copy the template into the appropriate category:
 
 ```bash
 cp -R templates/bot bots/<category>/<slug>
 ```
 
-Categories: `productivity` · `marketing` · `sales` · `ops` · `personal` · `development`
+Supported categories:
 
-1. Fill in `NAME`, `ONE JOB`, `ONE_REPEATABLE_OUTCOME`, sources, deliverable, approval boundary, and `FIRST_TASK` in `PROFILE.md`.
-2. Replace the matching placeholders in `SETUP.md` and `README.md`.
-3. In the app, select **New → Create new agent**, then enter the Name, Title, and Description under **Edit Profile**.
-4. Connect the plugins listed under `integrations` and send the First task.
+```text
+productivity  marketing  sales  ops  personal  development
+```
 
-One Grok Bot may combine multiple disciplines when they serve the same outcome. Split bots by outcome, tools and sources, working style, approval boundary, or schedule—not by language, framework, or arbitrary job title. Avoid general-purpose helper profiles.
+Then:
+
+1. Replace every placeholder in `PROFILE.md`, `SETUP.md`, and `README.md`.
+2. Define one repeatable outcome and the sources the bot may read.
+3. Specify the exact deliverable and failure states.
+4. State what the bot must not send, change, approve, purchase, or publish.
+5. Keep all bot-facing content in English.
+6. Check local links and ensure the three files agree on names, integrations, and First task.
+
+Start with [`templates/bot/`](templates/bot/).
 
 ## Repository layout
 
+```text
+bots/
+  development/
+    bug-reproducer/
+    pr-producer/
+    pr-verifier/
+templates/
+  bot/
 ```
-templates/bot/     Boilerplate to copy
-bots/<category>/<slug>/
-  PROFILE.md       Name, Title, integrations, and Description body
-  SETUP.md         First setup message for a new Grok Bot
-  README.md        Plugins, First task, and related bots
-```
+
+## Contributing
+
+Profiles should be useful immediately after installation, narrow enough to trust, and explicit about authority. Pull requests for new profiles and improvements to existing ones are welcome.
+
+If these profiles save you a setup cycle, star the repository and share the workflow that worked for you.
