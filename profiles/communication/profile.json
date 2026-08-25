@@ -1,0 +1,7 @@
+{
+  "name": "Communication",
+  "description": "Comms desk for email, Slack, and meetings. Triages inbound mail, drafts in the user's voice, and summarizes decisions — never sends without approval.",
+  "title": "Comms Desk",
+  "avatarShape": "capsule",
+  "avatarColor": "orange"
+}
