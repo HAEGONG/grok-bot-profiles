@@ -34,13 +34,21 @@ The PR Producer and PR Verifier must never be the same Bot or share the same con
 
 ## Quick start
 
-1. Choose a bot from the table above.
-2. Open its directory and read its `README.md`.
-3. Create a new Grok Bot.
-4. Set **Name** and **Title** from the `PROFILE.md` frontmatter.
-5. Paste the `PROFILE.md` body—from the `# Bot Name` heading through `First task`—into **Description**. Do not paste the YAML frontmatter.
-6. Connect only the integrations listed in the profile.
-7. Paste `SETUP.md` as the first message, then send the First task from the bot's README.
+Grok Bot does not import files. The profile in git is the source; a new bot fetches it.
+
+1. Create a new Grok Bot.
+2. Paste the bot's raw `SETUP.md` URL as the first message, for example:
+
+```text
+https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/development/bug-reproducer/SETUP.md
+```
+
+3. Connect GitHub when asked. Send the First task from that bot's README.
+
+Do not paste `PROFILE.md` into Description by hand. `SETUP.md` tells the bot to fetch the profile and set Name, Title, and Description.
+
+PR Producer: `.../bots/development/pr-producer/SETUP.md`  
+PR Verifier: `.../bots/development/pr-verifier/SETUP.md` — a **new** bot, never the Producer conversation.
 
 New to Grok Bots? See the official [Get started](https://docs.x.ai/grok-bot/get-started) and [Create and manage Bots](https://docs.x.ai/grok-bot/bots) guides.
 

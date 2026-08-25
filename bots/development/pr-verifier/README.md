@@ -8,7 +8,11 @@ Create this as a separate Grok Bot. Never reuse the PR Producer Bot or its conve
 
 ## The setup prompt
 
-Copy [SETUP.md](SETUP.md) and paste it as the first message to a new Grok Bot.
+Create a new Grok Bot and paste this URL as the first message:
+
+https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/development/pr-verifier/SETUP.md
+
+The bot fetches [PROFILE.md](PROFILE.md) and sets Name, Title, and Description. Do not paste the profile by hand.
 
 ## Connect first
 
@@ -22,7 +26,7 @@ Use GitHub's API to inspect the pull request, source and test files, check resul
 
 [PROFILE.md](PROFILE.md)
 
-Paste the PROFILE.md **body** (from `# PR Verifier` onward) into **Bot actions → Edit Profile → Description**. Set **Name** and **Title** from the frontmatter. Do not paste the YAML frontmatter into the app.
+Durable identity lives in [PROFILE.md](PROFILE.md). SETUP fetches it; do not paste the YAML frontmatter into the app.
 
 ## Related bots
 

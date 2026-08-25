@@ -6,7 +6,11 @@ Category: development
 
 ## The setup prompt
 
-Copy [SETUP.md](SETUP.md) and paste it as the first message to a new Grok Bot.
+Create a new Grok Bot and paste this URL as the first message:
+
+https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/development/pr-producer/SETUP.md
+
+The bot fetches [PROFILE.md](PROFILE.md) and sets Name, Title, and Description. Do not paste the profile by hand.
 
 ## Connect first
 
@@ -18,7 +22,7 @@ Open **Settings → Plugins** and add it. Cursor Cloud Agent is built into Grok 
 
 [PROFILE.md](PROFILE.md)
 
-Paste the PROFILE.md **body** (from `# PR Producer` onward) into **Bot actions → Edit Profile → Description**. Set **Name** and **Title** from the frontmatter. Do not paste the YAML frontmatter into the app.
+Durable identity lives in [PROFILE.md](PROFILE.md). SETUP fetches it; do not paste the YAML frontmatter into the app.
 
 ## Related bots
 
