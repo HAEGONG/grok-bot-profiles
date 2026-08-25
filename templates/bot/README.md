@@ -6,7 +6,7 @@ Category: CATEGORY
 
 ## The setup prompt
 
-Copy [SETUP.md](SETUP.md) and paste it as the first message to a new Grok Bot (or into Description if the bot already exists).
+Copy [SETUP.md](SETUP.md) and paste it as the first message to a new Grok Bot.
 
 ## Connect first
 

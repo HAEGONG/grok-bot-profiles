@@ -1,44 +1,69 @@
-# grok-bot-profiles
+# Grok Bot Profiles
 
-Grok Bot 직무 프로필 모음.
+Ready-to-use profiles for focused Grok Bots. Each bot owns one outcome and stops at a clear approval boundary.
 
-Grok Bot은 JSON을 임포트하지 않는다. 앱의 **Name / Title / Description / Avatar**에 붙여 넣는 텍스트다. 이 저장소는 그 텍스트를 `PROFILE.md`로 둔다.
+## Development
 
-공식 문서: [Create and manage Bots](https://docs.x.ai/grok-bot/bots) · [Get started](https://docs.x.ai/grok-bot/get-started) · [Use cases](https://docs.x.ai/grok-bot/use-cases)
+The development collection is organized by responsibility, not language or framework:
 
-## 앱 필드 매핑
+- [Bug Reproducer](bots/development/bug-reproducer/) — reproduces a reported bug and returns evidence without changing code
+- [PR Producer](bots/development/pr-producer/) — directs Cursor Cloud Agents to implement approved work and produce a pull request without merging it
+- [PR Verifier](bots/development/pr-verifier/) — independently checks tests, contracts, and regressions, then passes, blocks, or holds the pull request
 
-| 앱 | 파일 |
+Use them as a pipeline:
+
+```text
+Bug Reproducer → PR Producer → PR Verifier → Human merge decision
+```
+
+## Install a bot
+
+1. Open the bot's directory.
+2. Follow its `README.md`.
+3. Connect only the plugins listed for that bot.
+4. Keep separate Grok Bots for reproduction, implementation, and review.
+
+## Create another profile
+
+Start with the files in [`templates/bot/`](templates/bot/). Keep every bot focused on one repeatable outcome and state what it must never do.
+
+Grok Bots do not import profile JSON. A profile is text mapped to the app's **Name**, **Title**, **Description**, **Avatar**, and **Plugins** fields.
+
+Official documentation: [Create and manage Bots](https://docs.x.ai/grok-bot/bots) · [Get started](https://docs.x.ai/grok-bot/get-started) · [Use cases](https://docs.x.ai/grok-bot/use-cases)
+
+## App field mapping
+
+| App field | Repository source |
 | --- | --- |
 | Name | `PROFILE.md` frontmatter `name` |
 | Title | `PROFILE.md` frontmatter `title` |
-| Description | `PROFILE.md` 본문 (`# NAME`부터 First task까지). YAML frontmatter는 넣지 않는다 |
-| Avatar | 앱에서만 설정 |
+| Description | `PROFILE.md` body, from `# NAME` through `First task`; exclude the YAML frontmatter |
+| Avatar | Configure in the app |
 | Plugins | frontmatter `integrations` → Settings → Plugins |
 
-Description에는 계속 참이어야 하는 규칙만 넣는다. 이번 작업만의 지시는 대화에 둔다.
+Keep only durable behavior in the Description. Put one-off instructions in the conversation.
 
-## 새 봇 추가
+## Add a bot
 
 ```bash
 cp -R templates/bot bots/<category>/<slug>
 ```
 
-카테고리: `productivity` · `marketing` · `sales` · `ops` · `personal` · `development`
+Categories: `productivity` · `marketing` · `sales` · `ops` · `personal` · `development`
 
-1. `PROFILE.md`의 `NAME`, `ONE JOB`, `ONE_REPEATABLE_OUTCOME`, 소스, 산출물, 금지선, `FIRST_TASK`를 채운다.
-2. `SETUP.md`와 `README.md`의 같은 placeholder를 맞춘다.
-3. 앱에서 **New → Create new agent** 후 **Edit Profile**에 Name / Title / Description을 넣는다.
-4. `integrations`에 적힌 플러그인을 연결하고 First task를 보낸다.
+1. Fill in `NAME`, `ONE JOB`, `ONE_REPEATABLE_OUTCOME`, sources, deliverable, approval boundary, and `FIRST_TASK` in `PROFILE.md`.
+2. Replace the matching placeholders in `SETUP.md` and `README.md`.
+3. In the app, select **New → Create new agent**, then enter the Name, Title, and Description under **Edit Profile**.
+4. Connect the plugins listed under `integrations` and send the First task.
 
-직무가 갈라져야 하는 기준: 목표, 도구/소스, 작업 스타일, 승인 경계, 반복 스케줄. General Helper는 쓰지 않는다.
+One Grok Bot may combine multiple disciplines when they serve the same outcome. Split bots by outcome, tools and sources, working style, approval boundary, or schedule—not by language, framework, or arbitrary job title. Avoid general-purpose helper profiles.
 
-## 폴더
+## Repository layout
 
 ```
-templates/bot/     복사할 보일러플레이트
+templates/bot/     Boilerplate to copy
 bots/<category>/<slug>/
-  PROFILE.md       Name + Description 본문
-  SETUP.md         새 봇에 보내는 첫 메시지
-  README.md        플러그인, First task, 관련 봇
+  PROFILE.md       Name, Title, integrations, and Description body
+  SETUP.md         First setup message for a new Grok Bot
+  README.md        Plugins, First task, and related bots
 ```
