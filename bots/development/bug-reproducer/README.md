@@ -14,7 +14,7 @@ Copy [SETUP.md](SETUP.md) and paste it as the first message to a new Grok Bot.
 
 Open **Settings → Plugins** and add it.
 
-GitHub provides issue and repository evidence. Reproduction also requires a target URL that Grok can open. For a non-public surface, use an authorized browser session that you control; never paste credentials into the bot. If the surface or required logs are unavailable, the bot returns `BLOCKED` without guessing.
+GitHub provides issue and source evidence through its API; this bot must not clone the repository. Product reproduction happens in the browser on the Bot's computer, never through Cursor or another cloud coding agent. For a non-public surface, use an authorized browser session that you control; never paste credentials into the bot. If the surface or required logs are unavailable, the bot returns `BLOCKED` without guessing.
 
 ## Profile
 
@@ -29,4 +29,4 @@ Paste the PROFILE.md **body** (from `# Bug Reproducer` onward) into **Bot action
 
 ## First task
 
-`Inspect the highest-priority open bug in the connected repository. Attempt to reproduce it and return the reproduction report only. Do not change code or propose a fix.`
+`Ask me for the target repository and issue URL or number. If I provide only a repository, list its open issues labeled bug, sort them by explicit repository priority labels when present, and ask me to choose; never infer priority. Then attempt to reproduce the selected issue and leave the report in this chat without changing code or proposing a fix.`
