@@ -16,6 +16,8 @@ Copy [SETUP.md](SETUP.md) and paste it as the first message to a new Grok Bot.
 
 Open **Settings → Plugins** and add it.
 
+Use GitHub's API to inspect the pull request, source and test files, check results, and CI evidence. This bot must not clone the repository, run tests locally, or invoke a cloud coding agent. It leaves its verdict in the current chat only.
+
 ## Profile
 
 [PROFILE.md](PROFILE.md)
