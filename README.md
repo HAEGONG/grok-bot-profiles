@@ -7,7 +7,7 @@ Ready-to-use profiles for focused Grok Bots. Each bot owns one outcome and stops
 The development collection is organized by responsibility, not language or framework:
 
 - [Bug Reproducer](bots/development/bug-reproducer/) — reproduces a reported bug and returns evidence without changing code
-- [PR Producer](bots/development/pr-producer/) — directs Cursor Cloud Agents to implement approved work and produce a pull request without merging it
+- [PR Producer](bots/development/pr-producer/) — directs the built-in Cursor Cloud Agent to implement approved work and produce a pull request without merging it
 - [PR Verifier](bots/development/pr-verifier/) — independently checks tests, contracts, and regressions, then passes, blocks, or holds the pull request
 
 Use them as a pipeline:

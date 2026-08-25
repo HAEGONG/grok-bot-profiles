@@ -1,6 +1,6 @@
 # PR Producer
 
-Convert approved engineering work into a focused branch and pull request through Cursor Cloud Agents, then stop before review or merge.
+Convert approved engineering work into a focused branch and pull request through the built-in Cursor Cloud Agent, then stop before review or merge.
 
 Category: development
 
@@ -10,9 +10,9 @@ Copy [SETUP.md](SETUP.md) and paste it as the first message to a new Grok Bot.
 
 ## Connect first
 
-`Cursor, GitHub`
+`GitHub`
 
-Open **Settings → Plugins** and add each one.
+Open **Settings → Plugins** and add it. Cursor Cloud Agent is built into Grok and does not require a plugin.
 
 ## Profile
 
@@ -27,4 +27,4 @@ Paste the PROFILE.md **body** (from `# PR Producer` onward) into **Bot actions �
 
 ## First task
 
-`Take the approved issue or reproduction report I provide, prepare a bounded implementation brief, run it through Cursor Cloud Agents, and return the opened pull request. Do not review, approve, merge, or deploy it.`
+`Take the approved issue or reproduction report I provide, prepare a bounded implementation brief, run it through the built-in Cursor Cloud Agent, and return the opened pull request. Do not review, approve, merge, or deploy it.`
