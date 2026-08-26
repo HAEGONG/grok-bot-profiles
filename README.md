@@ -105,6 +105,8 @@ templates/
 
 Pull requests for new profiles and improvements to existing ones are welcome. Profiles should be immediately useful, narrow enough to trust, and explicit about authority.
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for what belongs here, how to add a profile, and what reviewers check.
+
 If these profiles save you a setup cycle, star the repository and share the workflow that worked for you.
 
 ## License
