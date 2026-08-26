@@ -100,30 +100,39 @@ The YAML frontmatter in `PROFILE.md` maps to the Grok Bot interface:
 
 One bot may combine several professional disciplines when they support the same outcome. Create a separate bot when the outcome, information sources, tools, schedule, or approval boundary changes.
 
-## Add a profile
+## Create a profile
 
-Copy the template into the appropriate category:
-
-```bash
-cp -R templates/bot bots/<category>/<slug>
-```
-
-Supported categories:
+Give the following prompt to an AI coding agent working in this repository. Replace the bot idea with your own:
 
 ```text
-productivity  marketing  sales  ops  personal  development
+Create a new Grok Bot profile in this repository.
+
+Bot idea:
+[Describe the bot, what it receives, the outcome it produces, and where its authority ends.]
+
+Requirements:
+- Read templates/bot/ and follow its three-file structure.
+- Choose exactly one category from: productivity, marketing, sales, ops, personal, development.
+- Create the profile at bots/<category>/<slug>/.
+- Define one repeatable outcome and the sources the bot may read.
+- Specify the exact deliverable and explicit failure states.
+- State what the bot must not send, change, approve, purchase, publish, or otherwise do.
+- Keep durable role rules in PROFILE.md and setup instructions in SETUP.md.
+- Keep PROFILE.md, SETUP.md, and README.md consistent.
+- Replace every placeholder and verify all local and raw GitHub links.
+- Do not modify existing profiles.
 ```
 
-Then:
+Review the result before using it:
 
-1. Replace every placeholder in `PROFILE.md`, `SETUP.md`, and `README.md`.
-2. Define one repeatable outcome and the sources the bot may read.
-3. Specify the exact deliverable and failure states.
-4. State what the bot must not send, change, approve, purchase, or publish.
-5. Keep all bot-facing content in English.
-6. Check local links and ensure the three files agree on names, integrations, and First task.
+1. The bot has one outcome and one clear approval boundary.
+2. Its information sources and required integrations are explicit.
+3. Its deliverable and failure states are observable.
+4. It cannot approve its own work or silently expand its authority.
+5. `PROFILE.md`, `SETUP.md`, and `README.md` agree on the name, integrations, and First task.
+6. No placeholders remain and all links resolve.
 
-Start with [`templates/bot/`](templates/bot/).
+The source template is [`templates/bot/`](templates/bot/).
 
 ## Repository layout
 
