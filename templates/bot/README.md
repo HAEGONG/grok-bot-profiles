@@ -26,7 +26,7 @@ Durable identity lives in [PROFILE.md](PROFILE.md). SETUP fetches it; do not pas
 
 ## Related bots
 
-- [EXISTING_RELATED_BOT](../EXISTING_RELATED_SLUG/)
+<!-- Link only existing, relevant bots. Remove this section if none exist. -->
 
 ## First task
 
