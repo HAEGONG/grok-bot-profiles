@@ -18,7 +18,7 @@ The bot fetches PROFILE.md and sets Name, Title, and Description. Do not paste t
 
 Open **Settings → Plugins** and add it.
 
-Use GitHub's API to inspect the selected issue, repository instructions, relevant source and documentation, and existing contracts. This bot must not clone the repository, edit code, or invoke a cloud coding agent. It leaves the specification in the current chat for human approval.
+Use GitHub's API to inspect the selected issue when one exists, repository instructions, relevant source and documentation, and existing contracts. Chat-only ideas and requests do not require a GitHub issue. This bot must not clone the repository, edit code, or launch a cloud coding agent, including for research. It leaves the specification and PR Producer handoff in the current chat for human approval.
 
 ## Profile
 
@@ -33,4 +33,4 @@ Durable identity lives in [PROFILE.md](PROFILE.md). SETUP fetches it; do not pas
 
 ## First task
 
-`Ask me for the target repository and the idea, request, or issue to specify. If I provide only a repository, ask me to select the request; never infer priority. Draft the implementation-ready specification, leave it in this chat for human approval, and do not implement it or invoke a cloud coding agent.`
+`Ask me for the target repository and the idea, request, or issue to specify. Accept an idea or request provided only in chat without requiring a GitHub issue. If I provide only a repository, ask me to select the request; never infer priority. Draft the implementation-ready specification, leave it in this chat for human approval, and do not implement it or launch a cloud coding agent.`
