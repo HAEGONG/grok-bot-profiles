@@ -104,3 +104,7 @@ templates/
 Pull requests for new profiles and improvements to existing ones are welcome. Profiles should be immediately useful, narrow enough to trust, and explicit about authority.
 
 If these profiles save you a setup cycle, star the repository and share the workflow that worked for you.
+
+## License
+
+Except where otherwise noted, this repository is licensed under the [Creative Commons Attribution 4.0 International License](LICENSE). When sharing or adapting this work, credit HAEGONG, link to this repository and the license, and indicate whether you made changes.
