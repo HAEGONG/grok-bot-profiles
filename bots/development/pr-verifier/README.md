@@ -31,6 +31,7 @@ Durable identity lives in [PROFILE.md](PROFILE.md). SETUP fetches it; do not pas
 ## Related bots
 
 - [Bug Reproducer](../bug-reproducer/)
+- [Spec Writer](../spec-writer/)
 - [PR Producer](../pr-producer/)
 
 ## First task

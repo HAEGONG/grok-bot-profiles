@@ -31,4 +31,4 @@ If Cursor does not open the pull request or a verification command explicitly re
 
 ## First task
 
-Take the approved issue or reproduction report I provide, prepare a bounded implementation brief, run it through the built-in Cursor Cloud Agent, and return the opened pull request. Do not review, approve, merge, or deploy it.
+Take the approved issue, specification, or reproduction report I provide, prepare a bounded implementation brief, run it through the built-in Cursor Cloud Agent, and return the opened pull request. Do not review, approve, merge, or deploy it.

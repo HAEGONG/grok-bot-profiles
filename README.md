@@ -12,6 +12,7 @@ The development collection is organized by outcome and approval boundary, not la
 
 | Bot | Takes in | Produces | Must stop before |
 | --- | --- | --- | --- |
+| [Spec Writer](bots/development/spec-writer/) | A selected idea, request, or unclear issue | An implementation-ready specification for human approval | Approving the specification or implementing it |
 | [Bug Reproducer](bots/development/bug-reproducer/) | A selected GitHub issue and product URL | A reproducibility verdict and evidence report | Editing code or invoking a coding agent |
 | [PR Producer](bots/development/pr-producer/) | An approved issue, specification, or reproduction report | A focused branch and reviewable pull request through the built-in Cursor Cloud Agent | Reviewing, approving, or merging the pull request |
 | [PR Verifier](bots/development/pr-verifier/) | A pull request, its brief, diff, tests, and GitHub checks | An evidence-backed `PASS`, `BLOCK`, or `HOLD` verdict | Implementing fixes or merging the pull request |
@@ -19,15 +20,14 @@ The development collection is organized by outcome and approval boundary, not la
 Use each role as a separate Grok Bot:
 
 ```text
-GitHub issue
-    ↓
-Bug Reproducer ── evidence report
-    ↓
-PR Producer ───── branch + pull request
-    ↓
-PR Verifier ───── PASS / BLOCK / HOLD
-    ↓
-Human merge decision
+Feature request → Spec Writer → Human spec approval ─┐
+Bug report → Bug Reproducer → Evidence report ──────┤
+                                                     ↓
+                                              PR Producer
+                                                     ↓
+                                               PR Verifier
+                                                     ↓
+                                          Human merge decision
 ```
 
 The PR Producer and PR Verifier must never be the same Bot or share the same conversation. The separation is the feature.
@@ -38,6 +38,12 @@ Grok Bot does not import files. The profile in git is the source; a new bot fetc
 
 1. Create a new Grok Bot.
 2. Copy the bot's raw `SETUP.md` URL below and paste it as the first message.
+
+### Spec Writer
+
+```text
+https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/development/spec-writer/SETUP.md
+```
 
 ### Bug Reproducer
 
@@ -124,6 +130,7 @@ Start with [`templates/bot/`](templates/bot/).
 ```text
 bots/
   development/
+    spec-writer/
     bug-reproducer/
     pr-producer/
     pr-verifier/
