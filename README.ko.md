@@ -50,10 +50,10 @@ Grok Bot을 처음 사용한다면 공식 [시작하기](https://docs.x.ai/grok-
 
 | 봇 | 다음 작업에 착수하기 전에 반드시 중단해야 합니다 |
 | --- | --- |
-| Spec Writer | 명세를 승인하거나 명세대로 구현하는 작업입니다 |
-| Bug Reproducer | 코드를 수정하거나 코딩 에이전트를 호출하는 작업입니다 |
-| PR Producer | Pull Request를 검토하거나 승인하거나 병합하는 작업입니다 |
-| PR Verifier | 수정 사항을 직접 구현하거나 Pull Request를 병합하는 작업입니다 |
+| Spec Writer | 명세를 승인하거나 명세대로 구현하는 작업 |
+| Bug Reproducer | 코드를 수정하거나 코딩 에이전트를 호출하는 작업 |
+| PR Producer | Pull Request를 검토하거나 승인하거나 병합하는 작업 |
+| PR Verifier | 수정 사항을 직접 구현하거나 Pull Request를 병합하는 작업 |
 
 PR Producer와 PR Verifier에는 같은 봇이나 같은 대화를 사용하면 안 됩니다. 두 역할을 분리해야 비로소 승인 경계가 성립하기 때문에, 이 분리는 구현 과정에서 편의에 따라 조정할 수 있는 세부 사항이 아닙니다.
 
