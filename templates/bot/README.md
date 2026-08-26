@@ -8,7 +8,7 @@ Category: CATEGORY
 
 Create a new Grok Bot and paste this URL as the first message:
 
-https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/CATEGORY/SLUG/SETUP.md
+https://raw.githubusercontent.com/ORIGIN_OWNER/ORIGIN_REPOSITORY/DEFAULT_BRANCH/bots/CATEGORY/SLUG/SETUP.md
 
 The bot fetches PROFILE.md and sets Name, Title, and Description. Do not paste the profile by hand.
 
@@ -26,7 +26,7 @@ Durable identity lives in [PROFILE.md](PROFILE.md). SETUP fetches it; do not pas
 
 ## Related bots
 
-- [RELATED_BOT](../RELATED_SLUG/)
+- [EXISTING_RELATED_BOT](../EXISTING_RELATED_SLUG/)
 
 ## First task
 
