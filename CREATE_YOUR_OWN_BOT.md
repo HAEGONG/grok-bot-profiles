@@ -30,7 +30,7 @@ Requirements:
 - Link only to existing, relevant bots. If none exist, remove the Related bots section from the new profile's README.md.
 - Build permanent raw URLs from the owner/repository of the origin remote and the repository's default branch. During generation, verify the corresponding local paths only. Check HTTP access only after the files are pushed to the branch used in the URL; a default-branch 404 before merge is expected.
 - Replace every placeholder and verify all local links.
-- Add the new bot to the appropriate discovery section in the root README. Create a category section if needed.
+- Add the new bot to the appropriate discovery section in every root README, including each translated README such as README.ko.md. Create a category section if needed, and write each translated entry in that README's language.
 - Do not modify templates/bot/ or any files inside existing profile directories.
 ```
 
@@ -47,4 +47,4 @@ Before installing your bot, confirm that:
 5. The First task stays within the same boundary, and the bot cannot approve its own work.
 6. `PROFILE.md`, `SETUP.md`, and `README.md` agree on the name, integrations, and First task.
 7. Every related-bot link points to an existing profile, raw URLs match the origin remote and default branch, and local paths resolve.
-8. No placeholders or secrets remain, and the root README makes the profile discoverable.
+8. No placeholders or secrets remain, and every root README, including each translated one, makes the profile discoverable.
