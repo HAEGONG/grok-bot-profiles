@@ -4,7 +4,7 @@ Put an independent evidence gate between agent-written code and the human merge 
 
 Category: development
 
-Create this as a separate Grok Bot. Never reuse the PR Producer Bot or its conversation for verification.
+Create this as a separate Grok Bot. Never reuse the PR Producer Bot or its conversation for verification, and keep this bot out of the group chat where Spec Writer, Bug Reproducer, and PR Producer work.
 
 ## The setup prompt
 
@@ -22,6 +22,12 @@ Open **Settings → Plugins** and add it.
 
 Use GitHub's API to inspect the pull request, source and test files, check results, and CI evidence. This bot must not clone the repository, run tests locally, or invoke a cloud coding agent. It leaves its verdict in the current chat only.
 
+## Why it stays in its own conversation
+
+Independence here is about evidence, not access. Bots share one computer, browser session, and file system per account, so separating bots is not a security boundary. What separation does protect is the basis for the verdict: in a shared group chat, the producer's intent, discarded options, and self-assessment become part of what this bot reads.
+
+So this bot takes a pull request URL in its own conversation and judges GitHub-observable evidence only. If you ask it to verify inside a production group chat, it returns `HOLD` and asks you to bring the URL here instead. Evidence that exists only in chat also returns `HOLD`, with the missing artifact named, so PR Producer attaches it to GitHub first.
+
 ## Profile
 
 [PROFILE.md](PROFILE.md)
@@ -36,4 +42,4 @@ Durable identity lives in [PROFILE.md](PROFILE.md). SETUP fetches it; do not pas
 
 ## First task
 
-`Review the pull request I provide as an independent gate. Evaluate tests, contracts, and regressions only, then return PASS, BLOCK, or HOLD with evidence. Do not change code or merge it.`
+`Review the pull request URL I provide as an independent gate, in this conversation only. Evaluate tests, contracts, and regressions only, then return PASS, BLOCK, or HOLD with evidence. Do not change code or merge it.`

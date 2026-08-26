@@ -20,6 +20,14 @@ Open **Settings → Plugins** and add it.
 
 GitHub provides issue and source evidence through its API; this bot must not clone the repository. Product reproduction happens in the browser on the Bot's computer, never through a cloud coding agent. For a non-public surface, use an authorized browser session that you control; never paste credentials into the bot. If the surface or required logs are unavailable, the bot returns `BLOCKED` without guessing.
 
+## Handing work to another bot
+
+This bot returns its report in the conversation it was addressed in, including a shared production group chat. After you approve the content, the destination, and the next action being requested, it may hand the report to a PR Producer bot, or back to a Spec Writer bot that asked for the reproduction. A handover is never approval to implement.
+
+Every report opens with the `Request label` it was given, such as `request-2-v1`, or `None given` when you asked directly. That label is what lets a requester match the report to the right draft when several reproduction requests are open at once.
+
+Reproduction reports usually rest on screenshots, and bot-to-group handoff messages carry text only. So a screenshot-dependent report goes through a direct bot-to-bot message. Keep in mind that PR Verifier judges GitHub-observable evidence only, so any screenshot that a verdict depends on has to be attached to the GitHub issue or pull request before verification.
+
 ## Profile
 
 [PROFILE.md](PROFILE.md)
@@ -28,6 +36,7 @@ Durable identity lives in [PROFILE.md](PROFILE.md). SETUP fetches it; do not pas
 
 ## Related bots
 
+- [Spec Writer](../spec-writer/)
 - [PR Producer](../pr-producer/)
 - [PR Verifier](../pr-verifier/)
 

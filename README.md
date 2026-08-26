@@ -35,27 +35,35 @@ New to Grok Bots? See the official [Get started](https://docs.x.ai/grok-bot/get-
 
 ## Development workflow
 
-Use each role as a separate Grok Bot:
+Use each role as a separate Grok Bot. Put the production roles in one group chat so drafts move without manual copying, and keep PR Verifier outside it:
 
 ```text
-Feature request → Spec Writer → Human spec approval ─┐
-Bug report → Bug Reproducer → Evidence report ───────┤
-                                                     ↓
-                                              PR Producer
-                                                     ↓
-                                               PR Verifier
-                                                     ↓
-                                          Human merge decision
+┌─ Production group chat ──────────────────────────────┐
+│  Feature request → Spec Writer ─┐                    │
+│  Bug report → Bug Reproducer ───┤                    │
+│                                 ↓                    │
+│         Human approves a named version to build      │
+│                                 ↓                    │
+│                          PR Producer                 │
+└─────────────────────────────────┼────────────────────┘
+                                  ↓ pull request URL only
+                    PR Verifier (its own conversation)
+                                  ↓
+                        Human merge decision
 ```
+
+Handing a draft to another bot is not approval. PR Producer implements only what you approve yourself, identified by version label or by replying to the message that holds that version, and it asks before sending the URL to PR Verifier.
+
+On the feature path you approve a Spec Writer specification version. On the bug path a reproduction report carries evidence but no contract, so PR Producer writes its own `brief v1` with acceptance criteria, contracts, verification, and non-goals, says the criteria are its own, and waits for you to approve that brief.
 
 | Bot | Must stop before |
 | --- | --- |
 | Spec Writer | Approving the specification or implementing it |
 | Bug Reproducer | Editing code or invoking a coding agent |
-| PR Producer | Reviewing, approving, or merging the pull request |
-| PR Verifier | Implementing fixes or merging the pull request |
+| PR Producer | Implementing without your version-named approval, and reviewing, approving, or merging the pull request |
+| PR Verifier | Implementing fixes, merging, or verifying inside a production group chat |
 
-The PR Producer and PR Verifier must never be the same bot or share the same conversation. Their separation is the approval boundary, not an implementation detail.
+The PR Producer and PR Verifier must never be the same bot, share a conversation, or sit in the same group chat. Their separation is the approval boundary, not an implementation detail. Bots share one computer and browser session per account, so this separation protects the basis for the verdict rather than acting as a security boundary.
 
 ## How profiles work
 
@@ -85,6 +93,7 @@ The YAML frontmatter in `PROFILE.md` maps to the Grok Bot interface:
 - **Make failure explicit.** Use named outcomes such as `BLOCKED` or `HOLD` instead of guessing or silently expanding authority.
 - **Require observable evidence.** Never invent logs, test results, check status, URLs, or repository state.
 - **Stop at the boundary.** Opening, approving, merging, and deploying a pull request are different permissions.
+- **Separate handover from approval.** A bot may pass work to a named bot once you approve the content and destination. A handover never satisfies a human-approval condition written into the receiving bot's own profile, so PR Producer still needs your approval to implement, while a read-only role such as PR Verifier can act on an approved handover directly.
 
 Create a separate bot when the outcome, information sources, tools, schedule, or approval boundary changes.
 
