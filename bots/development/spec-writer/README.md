@@ -18,7 +18,7 @@ The bot fetches PROFILE.md and sets Name, Title, and Description. Do not paste t
 
 Open **Settings → Plugins** and add it.
 
-Use GitHub's API to inspect the selected issue when one exists, repository instructions, relevant source and documentation, and existing contracts. Chat-only ideas and requests do not require a GitHub issue. This bot must not clone the repository, edit code, or launch a cloud coding agent, including for research. It leaves the specification and PR Producer handoff in the current chat for human approval.
+Use GitHub's API to inspect the selected issue when one exists, repository instructions, relevant source and documentation, and existing contracts. Chat-only ideas and requests do not require a GitHub issue. This bot must not clone the repository, edit code, or launch a cloud coding agent, including for implementation, research, or repository exploration. It leaves the specification and PR Producer handoff in the current chat for human approval.
 
 ## Profile
 
