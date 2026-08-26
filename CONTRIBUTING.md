@@ -24,12 +24,19 @@ State which promise of the profile is currently wrong, and quote the behavior yo
 
 ## Verifying your change
 
-There is no build step. Before opening a pull request, confirm by hand that:
+There is no build step. Run the link checker, which also runs on every pull request:
+
+```bash
+bash .github/scripts/check-links.sh
+```
+
+It confirms that every relative Markdown link resolves and that no template placeholder survives outside `templates/`. Raw URLs are skipped on purpose, because a link to the default branch returns 404 until your change is merged.
+
+Then confirm by hand what the script cannot check:
 
 - `PROFILE.md`, `SETUP.md`, and `README.md` agree on the bot's name, its integrations, and its First task.
-- Every relative link resolves to a file that exists.
-- Raw URLs use the owner and repository of the origin remote and the repository's default branch. A default-branch 404 is expected until the change is merged, so verify the local path instead.
-- No placeholder text, tokens, credentials, or secrets remain in any file.
+- Raw URLs use the owner and repository of the origin remote and the repository's default branch.
+- No tokens, credentials, or secrets remain in any file.
 
 ## Reporting a problem
 

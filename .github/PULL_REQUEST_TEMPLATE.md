@@ -21,6 +21,10 @@ Skip this section for documentation-only changes. Otherwise confirm each item, a
 - [ ] Every related-bot link points to an existing profile, raw URLs match the origin remote and default branch, and local paths resolve.
 - [ ] No placeholders or secrets remain, and every root README, including each translated one, makes the profile discoverable.
 
+## Verification
+
+- [ ] `bash .github/scripts/check-links.sh` passes locally.
+
 ## Notes for the reviewer
 
 <!-- Optional. Open questions, trade-offs you chose, or anything you could not verify. -->
