@@ -35,7 +35,7 @@ New to Grok Bots? See the official [Get started](https://docs.x.ai/grok-bot/get-
 
 ## Development workflow
 
-Use each role as a separate Grok Bot. Put the production roles in one group chat so drafts move without manual copying, and keep PR Verifier outside it:
+Use each role as a separate Grok Bot. Put the production roles in one group chat so drafts stay visible and you can approve a named handover without copying its content, and keep PR Verifier outside it. A draft appearing in the group does not start the next bot:
 
 ```text
 ┌─ Production group chat ──────────────────────────────┐
@@ -93,7 +93,7 @@ The YAML frontmatter in `PROFILE.md` maps to the Grok Bot interface:
 - **Make failure explicit.** Use named outcomes such as `BLOCKED` or `HOLD` instead of guessing or silently expanding authority.
 - **Require observable evidence.** Never invent logs, test results, check status, URLs, or repository state.
 - **Stop at the boundary.** Opening, approving, merging, and deploying a pull request are different permissions.
-- **Separate handover from approval.** A bot may pass work to a named bot once you approve the content and destination. A handover never satisfies a human-approval condition written into the receiving bot's own profile, so PR Producer still needs your approval to implement, while a read-only role such as PR Verifier can act on an approved handover directly.
+- **Separate handover from approval.** Returning a result or a notice of missing input in the current conversation needs no approval, but asking another bot to take the next action does, even when the message names no bot in a group where bots may choose to respond. A bot also starts work only on your direct request or an explicit handover addressed to it, so a notice left in a group does not wake it. A handover never satisfies a human-approval condition written into the receiving bot's own profile, so PR Producer still needs your approval to implement, while a read-only role such as PR Verifier can act on an approved handover directly.
 
 Create a separate bot when the outcome, information sources, tools, schedule, or approval boundary changes.
 

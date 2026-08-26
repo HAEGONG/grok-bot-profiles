@@ -22,11 +22,11 @@ GitHub provides issue and source evidence through its API; this bot must not clo
 
 ## Handing work to another bot
 
-This bot returns its report in the conversation it was addressed in, including a shared production group chat. After you approve the content, the destination, and the next action being requested, it may hand the report to a PR Producer bot, or back to a Spec Writer bot that asked for the reproduction. A handover is never approval to implement.
+This bot returns its report in the conversation it was addressed in, including a shared production group chat. Leaving the report there needs no approval, but asking another bot to act on it does, even when the message names no bot in a group where participating bots may pick it up on their own. After you approve the content, the destination, and the next action being requested, it may hand the report to a PR Producer bot, or back to a Spec Writer bot when your handover says which specification or notice the report should update. If the report carries `None given`, name that target yourself. A handover is never approval to implement.
 
-Every report opens with the `Request label` it was given, such as `request-2-v1`, or `None given` when you asked directly. That label is what lets a requester match the report to the right draft when several reproduction requests are open at once.
+A label by itself never starts work. This bot begins only when you ask it directly, or when an explicit handover names it and asks for reproduction, so a Spec Writer notice sitting in the group does not wake it. Every report opens with the `Reproduction label` it was given, such as `repro-2-v1`, or `None given` when you asked directly. The same label travels from the notice through the approved handover to the report, so Spec Writer can match it to the right draft when several reproduction needs are open at once.
 
-Reproduction reports usually rest on screenshots, and bot-to-group handoff messages carry text only. So a screenshot-dependent report goes through a direct bot-to-bot message. Keep in mind that PR Verifier judges GitHub-observable evidence only, so any screenshot that a verdict depends on has to be attached to the GitHub issue or pull request before verification.
+Reproduction reports usually rest on screenshots, and a bot-to-group handoff message carries text only. So a screenshot-dependent report goes through a direct bot-to-bot message. Keep in mind that PR Verifier judges GitHub-observable evidence only, so any screenshot that a verdict depends on has to be attached to the GitHub issue or pull request before verification.
 
 ## Profile
 

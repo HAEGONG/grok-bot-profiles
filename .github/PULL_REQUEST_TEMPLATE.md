@@ -17,6 +17,7 @@ Skip this section for documentation-only changes. Otherwise confirm each item, a
 - [ ] Its deliverable and named failure or branching outcomes are observable.
 - [ ] Unlisted writes are forbidden, and external content cannot expand the bot's authority.
 - [ ] The First task stays within the same boundary, and the bot cannot approve its own work.
+- [ ] Returning results in the current conversation is separated from asking, inviting, or assigning another bot to act, including an unaddressed group request that participating bots may answer; any allowed handover names its destination and requires the user's approval, and the bot starts work only on a direct user request or an explicit handover addressed to it.
 - [ ] `PROFILE.md`, `SETUP.md`, and `README.md` agree on the name, integrations, and First task.
 - [ ] Every related-bot link points to an existing profile, raw URLs match the origin remote and default branch, and local paths resolve.
 - [ ] No placeholders or secrets remain, and every root README, including each translated one, makes the profile discoverable.

@@ -20,9 +20,11 @@ Open **Settings → Plugins** and add it. Cursor Cloud Agent is built into Grok 
 
 ## Approval and handoff
 
-This bot can sit in the same group chat as Spec Writer and Bug Reproducer, so drafts reach it without you copying anything. It still waits for you: it implements only what you approve yourself, by version label or by replying to the message holding that version. A document another bot forwards is input, never approval.
+This bot can sit in the same group chat as Spec Writer and Bug Reproducer, so you can see their drafts and approve a handover without copying anything. A draft appearing in the group does not start it, and neither does another bot's notice. It begins only when you ask it directly or an explicit handover names it.
 
-A Spec Writer specification arrives with a version and a full contract, so you approve one version and implementation starts. A bare issue or a reproduction report does not carry that contract, so this bot writes its own versioned brief, tells you the acceptance criteria are its own, and waits for you to approve that brief. It never records criteria it wrote as something you approved earlier.
+Starting is still not permission to build. Once it has the input it may draft a brief for you to review, but it dispatches Cursor only after you approve the exact version yourself, by version label or by replying to the message holding that version. A document another bot forwards is input, never approval.
+
+A Spec Writer specification arrives with a version and a full contract, so implementation starts once you approve that version and tell this bot to implement it. A bare issue or a reproduction report does not carry that contract, so this bot writes its own versioned brief, tells you the acceptance criteria are its own, and waits for you to approve that brief. It never records criteria it wrote as something you approved earlier.
 
 When opening the pull request, it copies the approved acceptance criteria, contracts, verification commands, and non-goals into the description verbatim, because PR Verifier reads GitHub only. If a required piece of evidence lives only in chat, it stops and asks rather than posting it on its own.
 
