@@ -1,5 +1,7 @@
 # Grok Bot Profiles
 
+[English](README.md) | [한국어](README.ko.md)
+
 > One outcome. One approval boundary. One bot.
 
 Ready-to-use profiles for Grok Bots. Each profile gives a bot one focused job, a concrete deliverable, and an explicit point where its authority ends.
