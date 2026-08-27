@@ -15,12 +15,10 @@ Grok Bot does not import local files. To install a profile:
 1. Create a new Grok Bot.
 2. Copy the profile's **Setup prompt** URL from the table below.
 3. Paste the URL as the bot's first message.
-4. Connect the plugins the profile lists, when it lists any.
+4. Connect GitHub when the bot asks for it.
 5. Send the **First task** from the profile's README.
 
 `SETUP.md` fetches the profile and configures the bot's Name, Title, and Description. Do not paste `PROFILE.md` into Description by hand.
-
-### Development
 
 | Profile | Use it when you need to | Setup prompt |
 | --- | --- | --- |
@@ -28,12 +26,6 @@ Grok Bot does not import local files. To install a profile:
 | [Bug Reproducer](bots/development/bug-reproducer/) | Turn a selected bug report into a reproducibility verdict and evidence report | [Copy raw URL](https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/development/bug-reproducer/SETUP.md) |
 | [PR Producer](bots/development/pr-producer/) | Turn approved work into a focused branch and reviewable pull request | [Copy raw URL](https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/development/pr-producer/SETUP.md) |
 | [PR Verifier](bots/development/pr-verifier/) | Independently evaluate a pull request and return `PASS`, `BLOCK`, or `HOLD` | [Copy raw URL](https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/development/pr-verifier/SETUP.md) |
-
-### Productivity
-
-| Profile | Use it when you need to | Setup prompt |
-| --- | --- | --- |
-| [Research Scout](bots/productivity/research-scout/) | Turn a keyword into a research brief whose every claim carries its source | [Copy raw URL](https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/productivity/research-scout/SETUP.md) |
 
 ### Create your own bot
 
@@ -114,8 +106,6 @@ bots/
     pr-producer/
     pr-verifier/
     spec-writer/
-  productivity/
-    research-scout/
 templates/
   bot/
 ```

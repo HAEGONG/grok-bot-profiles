@@ -15,12 +15,10 @@ Grok Bot은 로컬 파일을 직접 가져오지 않습니다. 다음 절차에 
 1. 새로운 Grok Bot을 만듭니다.
 2. 아래 표에서 사용하려는 프로필을 찾아 **설정 프롬프트** URL을 복사합니다.
 3. 복사한 URL을 봇의 첫 메시지로 붙여 넣습니다.
-4. 프로필에 연결해야 하는 서비스가 명시되어 있다면 그 서비스를 연결합니다.
+4. 봇이 요청하면 GitHub를 연결합니다.
 5. 해당 프로필의 README에 있는 **첫 작업**을 봇에게 보냅니다.
 
 `SETUP.md`는 봇이 `PROFILE.md`를 가져오게 한 다음, 봇의 Name과 Title, Description을 설정합니다. `PROFILE.md`에 작성된 내용을 Description에 직접 붙여 넣지 마세요.
-
-### 개발
 
 | 프로필 | 다음과 같은 작업에 사용합니다 | 설정 프롬프트 |
 | --- | --- | --- |
@@ -28,12 +26,6 @@ Grok Bot은 로컬 파일을 직접 가져오지 않습니다. 다음 절차에 
 | [Bug Reproducer](bots/development/bug-reproducer/) | 선택한 버그 보고서를 조사하여 재현 가능 여부와 근거를 정리합니다 | [URL](https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/development/bug-reproducer/SETUP.md) |
 | [PR Producer](bots/development/pr-producer/) | 승인된 작업만 구현한 브랜치와 검토 가능한 Pull Request를 만듭니다 | [URL](https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/development/pr-producer/SETUP.md) |
 | [PR Verifier](bots/development/pr-verifier/) | Pull Request를 독립적으로 검증하고 `PASS`, `BLOCK`, `HOLD` 중 하나로 판정합니다 | [URL](https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/development/pr-verifier/SETUP.md) |
-
-### 생산성
-
-| 프로필 | 다음과 같은 작업에 사용합니다 | 설정 프롬프트 |
-| --- | --- | --- |
-| [Research Scout](bots/productivity/research-scout/) | 키워드를 조사하여 모든 주장에 출처를 붙인 조사 보고서를 작성합니다 | [URL](https://raw.githubusercontent.com/HAEGONG/grok-bot-profiles/main/bots/productivity/research-scout/SETUP.md) |
 
 ### 자신만의 봇 만들기
 
@@ -115,8 +107,6 @@ bots/
     pr-producer/
     pr-verifier/
     spec-writer/
-  productivity/
-    research-scout/
 templates/
   bot/
 ```
