@@ -16,7 +16,9 @@ The bot fetches [PROFILE.md](PROFILE.md) and sets Name, Title, and Description. 
 
 Nothing. This bot needs no plugins.
 
-This profile lists no connectors, so the bot works through the browser on the Bot's computer and reads public X posts and public Reddit threads there. If a built-in web or X search tool turns out to be available in your Bot, it uses that to find candidates and still opens each source in the browser before citing it. The profile does not assume the tool exists, so the brief stays valid either way, and `Searches run` tells you which path it actually used.
+This profile lists no connectors, so the bot works through the browser on the Bot's computer and opens every source in a new private browsing session. If a built-in web search tool turns out to be available in your Bot, it uses that to find candidates and still opens each source in the private browser before citing it. The profile does not assume the tool exists, so the brief stays valid either way, and `Searches run` tells you which path it actually used.
+
+Reddit and X get separate rules, because they fail in different ways. Reading public subreddits, threads, and comments signed out is in scope, and the bot treats a 403 from an HTTP fetch or a Reddit API as a quirk of that access path rather than proof that Reddit is unreachable: it retries the same URL in the private browser first, and falls back to `old.reddit.com` when the new interface gets in the way. Signed-out X search, by contrast, currently redirects to login or onboarding with no posts visible, so the bot reads an individual X URL only when it loads without a login wall, marks that URL unreachable when it hits login or a CAPTCHA, and does not claim X as a working source path unless a page actually rendered while signed out during that run.
 
 Reading stays signed-out on purpose. A signed-in session would let the bot reach content you cannot see through the brief's own source URLs, and it would put a write-capable account one click away from a read-only role.
 
