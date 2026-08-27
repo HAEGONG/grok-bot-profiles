@@ -18,7 +18,13 @@ Nothing. This bot needs no plugins.
 
 This profile lists no connectors, so the bot works through the browser on the Bot's computer and opens every source in a new private browsing session. If a built-in web search tool turns out to be available in your Bot, it uses that to find candidates and still opens each source in the private browser before citing it. The profile does not assume the tool exists, so the brief stays valid either way, and `Searches run` tells you which path it actually used.
 
-Reddit and X get separate rules, because they fail in different ways. Reading public subreddits, threads, and comments signed out is in scope, and the bot treats a 403 from an HTTP fetch or a Reddit API as a quirk of that access path rather than proof that Reddit is unreachable: it retries the same URL in the private browser first, and falls back to `old.reddit.com` when the new interface gets in the way. Signed-out X search, by contrast, currently redirects to login or onboarding with no posts visible, so the bot reads an individual X URL only when it loads without a login wall, marks that URL unreachable when it hits login or a CAPTCHA, and does not claim X as a working source path unless a page actually rendered while signed out during that run.
+## Where it looks
+
+The whole public web, not a fixed set of platforms. The bot follows the topic to whatever public sources carry the evidence: official documentation, standards, primary announcements and filings, papers and preprints, news reporting, technical blogs, issue trackers and release notes, forums and community threads, review and comparison sites, data portals, archived pages, and non-English sources when the topic lives in another language.
+
+It covers more than one kind of source before concluding, because one platform carries one kind of bias. Restrict it to certain platforms and it obeys, then records under `Gaps` what the restriction left out. `Searches run` names only the platforms it actually used.
+
+Two platforms carry extra rules, and those rules are about access rather than scope. Reading public subreddits, threads, and comments signed out is in scope, and the bot treats a 403 from an HTTP fetch or a Reddit API as a quirk of that access path rather than proof that Reddit is unreachable: it retries the same URL in the private browser first, and falls back to `old.reddit.com` when the new interface gets in the way. Signed-out X search, by contrast, currently redirects to login or onboarding with no posts visible, so the bot reads an individual X URL only when it loads without a login wall, marks that URL unreachable when it hits login or a CAPTCHA, and does not claim X as a working source path unless a page actually rendered while signed out during that run.
 
 Reading stays signed-out on purpose. A signed-in session would let the bot reach content you cannot see through the brief's own source URLs, and it would put a write-capable account one click away from a read-only role.
 
@@ -50,4 +56,4 @@ Durable identity lives in [PROFILE.md](PROFILE.md). SETUP fetches it; do not pas
 
 ## First task
 
-`Ask me for the keyword or question to research, and ask which scope applies, covering the time window, the region or language, and whether to prioritize X, Reddit, or the open web. If I give a keyword without a scope, state the default scope you will apply and start; if the keyword itself has two readings that would change the answer, return NEEDS_SCOPE instead of choosing one. Then leave the research brief in this chat without posting, replying, or contacting anyone.`
+`Ask me for the keyword or question to research, and ask which scope applies, covering the time window, the region or language, and whether any source type should be prioritized or excluded. Search the open web broadly by default rather than limiting yourself to a few platforms. If I give a keyword without a scope, state the default scope you will apply and start; if the keyword itself has two readings that would change the answer, return NEEDS_SCOPE instead of choosing one. Then leave the research brief in this chat without posting, replying, or contacting anyone.`
