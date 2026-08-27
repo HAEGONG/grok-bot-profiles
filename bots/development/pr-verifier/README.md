@@ -26,7 +26,7 @@ Use GitHub's API to inspect the pull request, source and test files, check resul
 
 Independence here is about evidence, not access. Bots share one computer, browser session, and file system per account, so separating bots is not a security boundary. What separation does protect is the basis for the verdict: in a shared group chat, the producer's intent, discarded options, and self-assessment become part of what this bot reads.
 
-So this bot takes a pull request URL in its own conversation and judges GitHub-observable evidence only. A direct handover is fine when its entire content is the URL, which keeps that conversation independent. If a producer's summary or attachment rides along, it returns `HOLD` and asks you to start a fresh PR Verifier bot for a clean URL-only handover. If you ask it to verify inside a production group chat, it returns `HOLD` and asks you to bring the URL to its own conversation instead. Evidence that exists only in chat also returns `HOLD`, with the missing artifact named, so PR Producer attaches it to GitHub first.
+So this bot takes a pull request URL in its own conversation and judges GitHub-observable evidence only. A direct Bot-to-Bot handover is fine when its entire content is the URL, which keeps that conversation independent. If a producer's summary or attachment rides along, it returns `HOLD` and asks you to start a fresh PR Verifier bot for a clean URL-only handover. If you ask it to verify inside a production group chat, it returns `HOLD` and asks you to bring the URL to its own conversation instead. Evidence that exists only in chat also returns `HOLD`, with the missing artifact named, so PR Producer attaches it to GitHub first.
 
 ## Profile
 
