@@ -37,19 +37,19 @@ Grok Bot을 처음 사용한다면 공식 [시작하기](https://docs.x.ai/grok-
 
 각 역할마다 서로 다른 Grok Bot을 만들어 사용하세요. 사용자가 결과물을 직접 복사하지 않고도 내용을 확인하고 전달을 승인할 수 있도록, 결과물을 생산하는 세 봇은 하나의 그룹 대화에 함께 참여시키고 PR Verifier는 그 대화에서 제외해야 합니다. 어떤 봇이 결과물을 그룹 대화에 게시하더라도 다음 봇이 그것만으로 작업을 시작하지는 않습니다.
 
-```text
-┌─ 생산 그룹 대화 ────────────────────────────────┐
-│  기능 요청 → Spec Writer ────┐                  │
-│  버그 보고 → Bug Reproducer ─┤                  │
-│                              ↓                  │
-│    사용자가 구현할 버전을 지정하여 승인         │
-│                              ↓                  │
-│                        PR Producer              │
-└──────────────────────────────┼──────────────────┘
-                               ↓ Pull Request URL만 전달
-              PR Verifier (별도의 대화에서 검증)
-                               ↓
-                      사용자의 병합 결정
+```mermaid
+flowchart TD
+    subgraph production["생산 그룹 대화"]
+        direction TB
+        feature["기능 요청"] --> spec["Spec Writer"]
+        bug["버그 보고"] --> reproducer["Bug Reproducer"]
+        spec --> approval["사용자가 구현할 버전을 지정하여 승인"]
+        reproducer --> approval
+        approval --> producer["PR Producer"]
+    end
+
+    producer -->|"Pull Request URL만 전달"| verifier["PR Verifier<br/>(별도의 대화에서 검증)"]
+    verifier --> merge["사용자의 병합 결정"]
 ```
 
 봇이 결과물을 다른 봇에게 전달하는 행위는 사용자의 승인을 대신하지 못합니다. PR Producer는 사용자가 직접 승인한 작업만 구현하며, 이때 승인 메시지는 결과물의 버전 라벨을 언급하거나 해당 버전이 담긴 메시지에 답장하는 방식으로 대상을 명확히 지정해야 합니다. 또한 PR Producer는 Pull Request URL을 PR Verifier에게 보내기 전에 사용자에게 승인을 요청합니다.

@@ -37,19 +37,19 @@ New to Grok Bots? See the official [Get started](https://docs.x.ai/grok-bot/get-
 
 Use each role as a separate Grok Bot. Put the production roles in one group chat so drafts stay visible and you can approve a named handover without copying its content, and keep PR Verifier outside it. A draft appearing in the group does not start the next bot:
 
-```text
-┌─ Production group chat ──────────────────────────────┐
-│  Feature request → Spec Writer ─┐                    │
-│  Bug report → Bug Reproducer ───┤                    │
-│                                 ↓                    │
-│         Human approves a named version to build      │
-│                                 ↓                    │
-│                          PR Producer                 │
-└─────────────────────────────────┼────────────────────┘
-                                  ↓ pull request URL only
-                    PR Verifier (its own conversation)
-                                  ↓
-                        Human merge decision
+```mermaid
+flowchart TD
+    subgraph production["Production group chat"]
+        direction TB
+        feature["Feature request"] --> spec["Spec Writer"]
+        bug["Bug report"] --> reproducer["Bug Reproducer"]
+        spec --> approval["Human approves a named version to build"]
+        reproducer --> approval
+        approval --> producer["PR Producer"]
+    end
+
+    producer -->|"Pull request URL only"| verifier["PR Verifier<br/>(its own conversation)"]
+    verifier --> merge["Human merge decision"]
 ```
 
 Handing a draft to another bot is not approval. PR Producer implements only what you approve yourself, identified by version label or by replying to the message that holds that version, and it asks before sending the URL to PR Verifier.
